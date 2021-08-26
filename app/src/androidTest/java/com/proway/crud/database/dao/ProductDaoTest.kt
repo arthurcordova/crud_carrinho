@@ -38,10 +38,12 @@ class ProductDaoTest {
     @Test
     fun insert_category_returns_true() {
         val c1 = Category(10L, "Eletronico")
-        val p1 = Product(20L, c1.id,"TV", 100.0)
+        val p1 = Product(20L, "TV", 100.0, c1.id)
         val productWithCategory = ProductWithCategory(product = p1, category = c1)
 
         dao.insert(productWithCategory)
+
+
 
         val results = dao.getProducts()
         Truth.assertThat(results).contains(productWithCategory)

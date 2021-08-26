@@ -13,21 +13,21 @@ interface ProductDao {
 
     @Transaction
     @Query("SELECT * FROM Product")
-    fun getProducts() : List<ProductWithCategory>
+    fun getProducts(): List<ProductWithCategory>
 
-    @Transaction
     @Insert
-    fun insert(list: List<Product>)
+    fun insert(product: Product)
 
+    @Insert
+    fun insert(category: Category): Long
 
     fun insert(productWithCategory: ProductWithCategory) {
         insert(productWithCategory.category!!)
-        productWithCategory.product?.let {
-            insert(listOf(it))
+        productWithCategory.product?.let { prod ->
+            insert(prod)
         }
     }
 
-    @Insert
-    fun insert(category: Category) : Long
+
 
 }

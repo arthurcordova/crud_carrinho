@@ -41,6 +41,10 @@ class CategoryDaoTest {
         val listToInsert = arrayListOf(category1, category2, category3)
         dao.insert(listToInsert)
 
+
+
+        Category(name = "aaaaaa")
+
         val results = dao.getCategories()
         assertThat(results).containsExactlyElementsIn(listToInsert)
     }
