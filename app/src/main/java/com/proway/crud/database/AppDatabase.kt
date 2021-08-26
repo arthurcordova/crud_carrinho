@@ -4,6 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.proway.crud.database.dao.CategoryDao
+import com.proway.crud.database.dao.ProductDao
+import com.proway.crud.model.Category
+import com.proway.crud.model.Product
 
 /**
  * Classe abstrata para criar nosso database local
@@ -13,7 +17,7 @@ import androidx.room.RoomDatabase
  * ao banco este numero deve ser incrementado)
  */
 @Database(
-    entities = [],
+    entities = [Product::class, Category::class],
     version = 1
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -21,7 +25,8 @@ abstract class AppDatabase : RoomDatabase() {
     /**
      * funcao declarada para o Room implementar automaticamente nosso DAO
      */
-//    abstract fun pokemonDAO(): PokemonDAO
+    abstract fun categoryDao(): CategoryDao
+    abstract fun productDao(): ProductDao
 
 
     companion object {
