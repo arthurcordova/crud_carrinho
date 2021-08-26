@@ -8,19 +8,19 @@ data class Product(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "prod_id")
     val id: Long,
+    val categoryId: Long,
     @ColumnInfo(name = "prod_name")
     val name: String,
     @ColumnInfo(name = "prod_price")
-    val price: Double,
-
+    val price: Double
 )
 
-data class ProductCategory(
+data class ProductWithCategory(
     @Embedded
-    val product: Product,
+    val product: Product?,
     @Relation(
-        parentColumn = "prod_id",
+        parentColumn = "categoryId",
         entityColumn = "cat_id"
     )
-    val category: Category
+    val category: Category?
 )

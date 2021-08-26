@@ -8,6 +8,7 @@ import com.google.common.truth.Truth
 import com.proway.crud.database.AppDatabase
 import com.proway.crud.model.Category
 import com.proway.crud.model.Product
+import com.proway.crud.model.ProductWithCategory
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -37,14 +38,13 @@ class ProductDaoTest {
     @Test
     fun insert_category_returns_true() {
         val c1 = Category(10L, "Eletronico")
-        val p1 = Product(20L, "TV", 100.0)
+        val p1 = Product(20L, c1.id,"TV", 100.0)
+        val productWithCategory = ProductWithCategory(product = p1, category = c1)
 
+        dao.insert(productWithCategory)
 
-        val listToInsert = arrayListOf(category1, category2, category3)
-        dao.insert(listToInsert)
-
-        val results = dao.getCategories()
-        Truth.assertThat(results).containsExactlyElementsIn(listToInsert)
+        val results = dao.getProducts()
+        Truth.assertThat(results).contains(productWithCategory)
     }
 
 }
