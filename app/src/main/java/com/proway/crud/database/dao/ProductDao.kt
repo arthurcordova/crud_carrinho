@@ -28,6 +28,4 @@ interface ProductDao {
         }
     }
 
-
-
 }

@@ -41,12 +41,35 @@ class CategoryDaoTest {
         val listToInsert = arrayListOf(category1, category2, category3)
         dao.insert(listToInsert)
 
-
-
-        Category(name = "aaaaaa")
-
         val results = dao.getCategories()
         assertThat(results).containsExactlyElementsIn(listToInsert)
+    }
+
+    @Test
+    fun delete_category_returns_true() {
+        val category1 = Category(1L, "Eletronico")
+        val category2 = Category(2L, "Higiene")
+        val category3 = Category(3L, "Bazar")
+        val listToInsert = arrayListOf(category1, category2, category3)
+        dao.insert(listToInsert)
+
+        dao.delete(category3)
+
+        val results = dao.getCategories()
+        assertThat(results).doesNotContain(category3)
+    }
+
+    @Test
+    fun update_category_returns_true() {
+        val category1 = Category(1L, "Eletronico")
+        val listToInsert = arrayListOf(category1)
+        dao.insert(listToInsert)
+
+        val updateCategory = Category(1L, "Test")
+        dao.update(updateCategory)
+
+        val result = dao.getCategory(updateCategory.id)
+        assertThat(result.name).isEqualTo(updateCategory.name)
     }
 
 

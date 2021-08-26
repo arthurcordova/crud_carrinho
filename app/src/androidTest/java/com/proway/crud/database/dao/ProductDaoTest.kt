@@ -43,8 +43,6 @@ class ProductDaoTest {
 
         dao.insert(productWithCategory)
 
-
-
         val results = dao.getProducts()
         Truth.assertThat(results).contains(productWithCategory)
     }
