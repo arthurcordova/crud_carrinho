@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CRUD</string>
+    <string name="crud_category">CRUD Category</string>
+    <string name="id">ID</string>
+    <string name="name">Name</string>
+    <string name="new_label">new</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="categories">Categories</string>
 </resources>
