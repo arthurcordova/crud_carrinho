@@ -30,12 +30,7 @@ class ProductCRUDFragment : Fragment(R.layout.product_crud_fragment) {
     private var selectedProduct: ProductWithCategory? = null
 
     private val adapter: ProductAdapter = ProductAdapter {
-        selectedCategory = it.category
-        selectedProduct = it
-        binding.inputIdTextInputLayout.visibility = View.VISIBLE
-        binding.newButton.visibility = View.GONE
         setValueToFields(it)
-
     }
 
     private val observerProducts = Observer<List<ProductWithCategory>> {
@@ -66,7 +61,6 @@ class ProductCRUDFragment : Fragment(R.layout.product_crud_fragment) {
             ArrayAdapter<String>(requireContext(), R.layout.spinner_item_category)
         val autoCompleteBrand: AutoCompleteTextView? =
             binding.inputCategoryTextInputLayout.editText as? AutoCompleteTextView
-        autoCompleteBrand?.threshold = 1
         autoCompleteBrand?.setAdapter(adapterSpinner)
         autoCompleteBrand?.setOnItemClickListener { parent, view, position, id ->
             val selected = parent.getItemAtPosition(position) as String
@@ -142,6 +136,7 @@ class ProductCRUDFragment : Fragment(R.layout.product_crud_fragment) {
         binding.newButton.visibility = View.VISIBLE
 
         selectedCategory = null
+        selectedProduct = null
     }
 
     fun setValueToFields(productWithCategory: ProductWithCategory) {
@@ -149,6 +144,12 @@ class ProductCRUDFragment : Fragment(R.layout.product_crud_fragment) {
         binding.inputNameTextInputLayout.editText?.setText(productWithCategory.product?.name)
         binding.inputPriceTextInputLayout.editText?.setText(productWithCategory.product?.price.toString())
         binding.inputCategoryTextInputLayout.editText?.setText(productWithCategory.category?.name)
+
+        binding.inputIdTextInputLayout.visibility = View.VISIBLE
+        binding.newButton.visibility = View.GONE
+
+        selectedProduct = productWithCategory
+        selectedCategory = productWithCategory.category
     }
 
 

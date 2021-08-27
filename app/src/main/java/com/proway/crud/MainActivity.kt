@@ -31,14 +31,12 @@ class MainActivity : AppCompatActivity() {
         binding.bottomBarNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_products -> {
-                    //TODO
                     replaceFragment(fragment = ProductCRUDFragment.newInstance())
                 }
                 R.id.nav_categories -> {
                     replaceFragment(fragment = CategoryCRUDFragment.newInstance())
                 }
                 R.id.nav_cart -> {
-                    //TODO
                     replaceFragment(fragment = LoginFragment.newInstance())
                 }
             }
