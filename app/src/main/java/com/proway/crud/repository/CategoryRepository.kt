@@ -1,13 +1,12 @@
 package com.proway.crud.repository
 
-import android.content.Context
 import com.proway.crud.database.AppDatabase
 import com.proway.crud.database.dao.CategoryDao
 import com.proway.crud.model.Category
 
-class CategoryRepository(val context: Context) {
+class CategoryRepository() {
 
-    private val dao: CategoryDao = AppDatabase.getDatabase(context).categoryDao()
+    private val dao: CategoryDao = AppDatabase.getDatabase().categoryDao()
 
     fun getCategories(): List<Category> {
         return dao.getCategories()
@@ -15,6 +14,14 @@ class CategoryRepository(val context: Context) {
 
     fun insert(category: Category) {
         return dao.insert(arrayListOf(category))
+    }
+
+    fun update(category: Category) {
+        return dao.update(category)
+    }
+
+    fun delete(category: Category) {
+        return dao.delete(category)
     }
 
 

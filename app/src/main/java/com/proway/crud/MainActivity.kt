@@ -9,6 +9,7 @@ import com.proway.crud.databinding.MainActivityBinding
 import com.proway.crud.utils.replaceFragment
 import com.proway.crud.view.CategoryCRUDFragment
 import com.proway.crud.view.LoginFragment
+import com.proway.crud.view.ProductCRUDFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,11 +20,11 @@ class MainActivity : AppCompatActivity() {
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         settingBottomBar()
-        settingInitialFrag()
+        settingInitFrag()
     }
 
-    fun settingInitialFrag() {
-        replaceFragment(fragment = LoginFragment.newInstance())
+    fun settingInitFrag() {
+        replaceFragment(fragment = ProductCRUDFragment.newInstance())
     }
 
     fun settingBottomBar() {
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.nav_products -> {
                     //TODO
-                    replaceFragment(fragment = LoginFragment.newInstance())
+                    replaceFragment(fragment = ProductCRUDFragment.newInstance())
                 }
                 R.id.nav_categories -> {
                     replaceFragment(fragment = CategoryCRUDFragment.newInstance())

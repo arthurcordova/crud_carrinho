@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.proway.crud.CRUDApplication
 import com.proway.crud.database.dao.CategoryDao
 import com.proway.crud.database.dao.ProductDao
 import com.proway.crud.model.Category
@@ -34,9 +35,9 @@ abstract class AppDatabase : RoomDatabase() {
         /**
          * Singleton que irá gerar nossa classe AppDatabse com tudo implementado pelo Room.
          */
-        fun getDatabase(context: Context): AppDatabase {
+        fun getDatabase(): AppDatabase {
             return Room.databaseBuilder(
-                context.applicationContext,
+                CRUDApplication.contextCRUDApp!!,
                 AppDatabase::class.java,
                 "crud_app_db"
             )

@@ -3,18 +3,16 @@ package com.proway.crud.view
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.proway.crud.R
 import com.proway.crud.adapter.CategoryAdapter
 import com.proway.crud.databinding.CategoryCrudFragmentBinding
 import com.proway.crud.model.Category
-import com.proway.crud.view_model.MainViewModel
+import com.proway.crud.view_model.CategoryCRUDViewModel
 
 class CategoryCRUDFragment : Fragment(R.layout.category_crud_fragment) {
 
@@ -22,7 +20,7 @@ class CategoryCRUDFragment : Fragment(R.layout.category_crud_fragment) {
         fun newInstance() = CategoryCRUDFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: CategoryCRUDViewModel
     private lateinit var binding: CategoryCrudFragmentBinding
     private var selectedCategory: Category? = null
 
@@ -41,8 +39,7 @@ class CategoryCRUDFragment : Fragment(R.layout.category_crud_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = CategoryCrudFragmentBinding.bind(view)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.injectContextAndStartDAO(requireContext())
+        viewModel = ViewModelProvider(this).get(CategoryCRUDViewModel::class.java)
 
         settingRecyclerView()
         settingForm()

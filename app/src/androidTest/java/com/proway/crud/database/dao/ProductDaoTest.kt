@@ -20,6 +20,7 @@ class ProductDaoTest {
 
     private lateinit var database: AppDatabase
     private lateinit var dao: ProductDao
+    private lateinit var daoCategory: CategoryDao
 
     @Before
     fun setup() {
@@ -28,6 +29,7 @@ class ProductDaoTest {
             AppDatabase::class.java
         ).allowMainThreadQueries().build()
         dao = database.productDao()
+        daoCategory = database.categoryDao()
     }
 
     @After
@@ -46,5 +48,6 @@ class ProductDaoTest {
         val results = dao.getProducts()
         Truth.assertThat(results).contains(productWithCategory)
     }
+
 
 }

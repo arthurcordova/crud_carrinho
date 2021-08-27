@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.proway.crud.R
-import com.proway.crud.view_model.MainViewModel
+import com.proway.crud.view_model.CategoryCRUDViewModel
 
 class LoginFragment : Fragment() {
 
@@ -15,7 +15,7 @@ class LoginFragment : Fragment() {
         fun newInstance() = LoginFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: CategoryCRUDViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +26,7 @@ class LoginFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(CategoryCRUDViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

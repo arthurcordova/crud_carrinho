@@ -7,7 +7,7 @@ data class Product(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "prod_id")
-    val id: Long,
+    var id: Long = 0L,
     @ColumnInfo(name = "prod_name")
     val name: String,
     @ColumnInfo(name = "prod_price")
